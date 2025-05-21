@@ -3,6 +3,7 @@
 // =============================================
 // Array of all images to cycle through
 // Customize these paths to your own images
+document.addEventLister(DOMContentLoaded',() => {
 const images = [
   './assets/image-content/image-1.png',
   './assets/image-content/image-2.png',
@@ -20,64 +21,44 @@ const buttonTexts = [
   'Make Space. Inhale.',
 ];
 
-// =============================================
-// STEP 2: Reference HTML elements 
-// =============================================
-// Connect to the elements we need to change
 const imageContent = document.querySelector('.image-content');  // Image container
-const mainButton = document.createElement('button');      // Image switch button
+const mainButton = document.getElementbyId('main-button');      // Image switch button
 const finalMessage = document.querySelector('.final-message');  // Final message
-let currentIndex = 0;
+let currentStep = 0;
 
-// Create and insert the main button
-mainButton.id = 'main-button';
-mainButton.textContent = buttonTexts [0];
-document.querySelector('.inner-container').appendChild(mainButton);
-
-// =============================================
-// STEP 4: Update image function 
-// =============================================
-// Function to change images with fade effect
 function updateImage() {
-  // Fade out current image
   imageContent.style.opacity = 0;
-  
-  // Preload next image
   const img = new Image();
   img.src = images[currentIndex];
-  
-  // When image is loaded
   img.onload = () => {
-    // Change to new image
     imageContent.style.backgroundImage = `url('${images[currentIndex]}')`;
-    
-    // Fade in new image
     imageContent.style.opacity = 1;
   };
 }
+
 
 // =============================================
 // STEP 5: Initial image display 
 // =============================================
 // Show first image when page loads
-updateImage();
-
+updateImage(currentStep);
+mainButton.textContent = buttonTexts[currentStep];
 // =============================================
 // STEP 6: Button click handler 
 // =============================================
 // Change image when button is clicked
 mainButton.addEventListener('click', () => {
   // Go to next image
-  currentIndex++;
+  currentStep++;
   
   // Update if not at the end
-  if (currentIndex < images.length) {
-    updateImage();
-    mainButton.textContent = buttonTexts [currentIndex] || 'Continue';
+  if (currentStep< images.length) {
+    updateImage(currentStep);
+    mainButton.textContent = buttonTexts [currentStep];
   }
   
   // Once at the last image, show the final message and hide the button 
-  if (currentIndex === images.length - 1) {
+  if (currentStep === images.length - 1) {
     mainButton.style.display = 'none';
     finalMessage.style.display = 'block';
   }
