@@ -1,4 +1,3 @@
-// =============================================
 // STEP 1: Set up the image array 
 // =============================================
 // Array of all images to cycle through
@@ -12,12 +11,20 @@ const images = [
   './assets/image-content/image-6.png'
 ];
 
+const buttonTexts = [
+  'Find Your Breath: Inhale.',
+  'Soften: Exhale',
+  'Awaken: Inhale',
+  'Release: Exhale',
+  'Make Space. Inhale.'
+]
+
 // =============================================
 // STEP 2: Reference HTML elements 
 // =============================================
 // Connect to the elements we need to change
 const imageContent = document.querySelector('.image-content');  // Image container
-const mainButton = document.getElementById('main-button');      // Image switch button
+const mainButton = document.createElement('button');      // Image switch button
 const finalMessage = document.querySelector('.final-message');  // Final message
 
 // =============================================
@@ -25,6 +32,12 @@ const finalMessage = document.querySelector('.final-message');  // Final message
 // =============================================
 // Start with the first image (index 0)
 let currentIndex = 0;
+
+  // Create and insert the main button
+  mainButton.id = 'main-button';
+  mainButton.textContent = buttonTexts[0];
+  document.querySelector('.inner-container').appendChild(mainButton);
+
 
 // =============================================
 // STEP 4: Update image function 
@@ -41,7 +54,7 @@ function updateImage() {
   // When image is loaded
   img.onload = () => {
     // Change to new image
-    imageContent.style.backgroundImage = `url('${images[currentIndex]}')`;
+    imageContent.style.backgroundImage = url('${images[currentIndex]}');
     
     // Fade in new image
     imageContent.style.opacity = 1;
@@ -65,6 +78,7 @@ mainButton.addEventListener('click', () => {
   // Update if not at the end
   if (currentIndex < images.length) {
     updateImage();
+    mainButton.textContent = buttonTexts[currentIndex] || 'Continue';
   }
   
   // Once at the last image, show the final message and hide the button 
@@ -73,3 +87,4 @@ mainButton.addEventListener('click', () => {
     finalMessage.style.display = 'block';
   }
 });
+</script>

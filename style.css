@@ -1,14 +1,14 @@
 /* Customization Variables */
 :root {
     /* Colors */
-    --color-page-background: #50AFC9;
-    --color-main-container-background: #FF5B70;
+    --color-page-background: #ffffff;
+    --color-main-container-background: #7db784;
     --color-inner-container-background: #FFF7F4;
-    --color-border: #9E0E2B;
+    --color-border: #517856;
     --color-button-background: #FFF;
     --color-heading-text: #FFF;
-    --color-button-text: #9E0E2B;
-    --color-message-text: #9E0E2B;
+    --color-button-text: #4c3f54;
+    --color-message-text: #4c3f54;
     
     /* Images */
     --image-path-background: url('assets/main-bg.png');
@@ -16,8 +16,8 @@
     
     /* Fonts */
     --font-family-main: "Pixelify Sans", sans-serif;
-    --font-size-large: 1.75rem;
-    --font-size-medium: 1.5635rem;
+    --font-size-large: 1.3rem;
+    --font-size-medium: 0.8rem;
     
     /* Border Radius */
     --border-radius: 0.31269rem;
@@ -118,7 +118,7 @@
   /* Image Content */
   .image-content {
     position: relative;
-    height: 65%;
+    height: 80%;
     aspect-ratio: 142.5 / 171;
     display: flex;
     flex-direction: column;
@@ -153,7 +153,7 @@
   }
   
   #main-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.00);
   }
   
   .final-message {
